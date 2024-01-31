@@ -3,16 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Controladores de Câmera</title>
+  <title>Simple CRUD Example</title>
 </head>
 <body>
 
-  <h1>Lista de Controladores de Câmera</h1>
+  <h1>Simple CRUD Example</h1>
 
-  <div id="cameraList"></div>
+  <ul id="userList"></ul>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="client.js"></script>
+  <h2>Add User</h2>
+  <form id="userForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <button type="submit">Add User</button>
+  </form>
+
+  <script>
+    // Simulando um banco de dados (array de usuários)
+    let users = [];
+
+    // Função para exibir a lista de usuários
+    function displayUsers() {
+      const userList = document.getElementById('userList');
+      userList.innerHTML = '';
+
+      users.forEach(user => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `Username: ${user.username}, Email: ${user.email}`;
+        userList.appendChild(listItem);
+      });
+    }
+
+    // Função para adicionar um usuário
+    function addUser(username, email) {
+      users.push({ username, email });
+      displayUsers();
+    }
+
+    // Event listener para o formulário de adição de usuário
+    const userForm = document.getElementById('userForm');
+    userForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const usernameInput = document.getElementById('username');
+      const emailInput = document.getElementById('email');
+      addUser(usernameInput.value, emailInput.value);
+      // Limpar os campos do formulário após adicionar um usuário
+      usernameInput.value = '';
+      emailInput.value = '';
+    });
+
+    // Adicionando alguns usuários iniciais para fins de exemplo
+    addUser('user1', 'user1@example.com');
+    addUser('user2', 'user2@example.com');
+  </script>
 
 </body>
 </html>

@@ -17,6 +17,14 @@ body {
     border-radius: 10px;
   }
 
+  #cameraForm {
+
+    gap: 10px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+  }
 
   #remote {
     display: grid;
@@ -46,6 +54,27 @@ body {
   .button:hover {
     background-color: #45a049;
   }
+
+  #id{
+    grid-column: 1;
+    grid-row: 3;
+    width: 80%;
+
+  }
+
+  #location{
+    grid-column: 2;
+    grid-row: 3;
+    width: 80%;
+
+  }
+
+  #submit{
+    grid-column: 3;
+    grid-row: 3;
+  }
+
+
 
   #camera {
     grid-column: 3;
@@ -79,28 +108,3 @@ body {
     background-color: blue; /* Cor vermelha */
   }
 
-
-
-.square {
-width: 200px;
-height: 200px;
-margin: 10px;
-display: flex;
-border-radius: 5px;
-}
-
-#square1 {
-background-color: red;
-}
-
-#square2 {
-background-color: green;
-}
-
-#square3 {
-background-color: blue;
-}
-
-#square4 {
-background-color: yellow;
-}

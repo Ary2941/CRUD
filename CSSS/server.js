@@ -15,6 +15,20 @@ app.get('/cameras', (req, res) => {
   res.json(cameras);
 });
 
+
+// Rota para atualizar as informações do último movimento
+app.get('/cameras/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const cameraToUpdate = cameras.find(camera => camera.id === id);
+  if (cameraToUpdate) {
+    res.json(cameraToUpdate);
+  } else {
+    res.status(404).json({ error: 'Camera not found' });
+  }
+});
+
+
 // Rota para criar um novo controlador de câmera
 app.post('/cameras', (req, res) => {
   const { id, location } = req.body;
@@ -41,7 +55,7 @@ app.put('/cameras/:id', (req, res) => {
 app.delete('/cameras/:id', (req, res) => {
   const id = parseInt(req.params.id);
   cameras = cameras.filter(camera => camera.id !== id);
-  res.json({ message: 'Camera não se pode mais ser controlada' });
+  res.json({ message: 'desativada' });
 });
 
 app.listen(PORT, () => {

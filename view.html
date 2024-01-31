@@ -9,14 +9,32 @@
 </head>
 <body>
 
+  
+    
   <div id="remote">
-    <button class="button" id="camera">0</button>
-    <button class="button" id="natal">C</button>
+    <form id="cameraForm">
+      <input placeholder="id" type="number" id="id" required>
+      <input placeholder="location" type="text" id="location" required>
+  
+      <button type="submit" id="submit">create</button>
+    </form>
+  
+    <button class="button" id="camera"></button>
+    <button class="button" id="natal"></button>
     <button class="button" id="up">&#8593;</button>
     <button class="button" id="left">&#8592;</button>
     <button class="button" id="right">&#8594;</button>
     <button class="button" id="down">&#8595;</button>
+    
   </div>
+  
+  </div>
+
+ 
+
+
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
