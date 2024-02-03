@@ -1,22 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Importa o pacote CORS
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
 
-app.use(cors()); // Habilita o CORS para todas as rotas
+app.use(cors()); // hihi burlei a política do CORS
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 let cameras = [];
 
-// Rota para obter todos os controladores de câmera
+// abrindo o server
+app.listen(PORT, () => {
+  console.log(`controle hospedado em localhost:${PORT}`);
+});
+
+// Rota para o controle
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/view.html');
+});
+
+// Rota para obter todas as câmeras
 app.get('/cameras', (req, res) => {
   res.json(cameras);
 });
 
-
-// Rota para atualizar as informações do último movimento
+// Rota para obter uma câmera pelo id
 app.get('/cameras/:id', (req, res) => {
   const id = parseInt(req.params.id);
 
@@ -28,8 +38,7 @@ app.get('/cameras/:id', (req, res) => {
   }
 });
 
-
-// Rota para criar um novo controlador de câmera
+// Rota para adicionar nova câmera
 app.post('/cameras', (req, res) => {
   const { id, location } = req.body;
   const newCamera = { id, location, lastMovement: null };
@@ -37,7 +46,7 @@ app.post('/cameras', (req, res) => {
   res.json(newCamera);
 });
 
-// Rota para atualizar as informações do último movimento
+// Rota para atualizar as informações do último movimento de uma câmera
 app.put('/cameras/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const lastMovement = req.body.lastMovement;
@@ -51,13 +60,30 @@ app.put('/cameras/:id', (req, res) => {
   }
 });
 
-// Rota para excluir um controlador de câmera
+// Rota para excluir uma câmera do server
 app.delete('/cameras/:id', (req, res) => {
   const id = parseInt(req.params.id);
   cameras = cameras.filter(camera => camera.id !== id);
   res.json({ message: 'desativada' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor está ouvindo na porta ${PORT}`);
+// Rota para css
+app.get('/style.css', (req, res) => {
+  res.sendFile(__dirname + '/style.css');
+});
+
+// rota para js
+app.get('/script.js', (req, res) => {
+  res.sendFile(__dirname + '/script.js');
+});
+
+
+// rota para js
+app.get('/song.mp3', (req, res) => {
+  res.sendFile(__dirname + '/remote control.mp3');
+});
+
+// rota para js
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(__dirname + '/favicon.ico');
 });

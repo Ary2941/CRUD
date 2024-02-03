@@ -6,6 +6,9 @@
   "repository": "https://github.com/Ary2941/CRUD.git",
   "author": "Amaury2941 <amaury2941@gmail.com>",
   "license": "MIT",
+  "scripts":{
+    "server": "node coeur/server.js"
+  },
   "dependencies": {
     "axios": "^1.6.7",
     "body-parser": "^1.20.2",

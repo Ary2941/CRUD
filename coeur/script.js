@@ -65,7 +65,6 @@ async function readCameraExistence(id){
   return response.data;
 }
 
-
 // Update _______________________________________________________________________________________________________________
 async function updateLastMovement(id, lastMovement) {
   try {
@@ -89,12 +88,13 @@ async function deleteCamera(id) {
 ///////////////////////////////////////////////////////
 
 const cameraForm = document.getElementById('cameraForm');
-cameraForm.addEventListener('submit', function () {
-  const idInput = parseInt(document.getElementById('id').value);
+cameraForm.addEventListener('submit', function (event) {
+  event.preventDefault(); // não atualize a página!!
+  const idInput = parseInt(document.getElementById('id').value); 
   const locationInput = document.getElementById('location').value;
   createCamera(idInput, locationInput);
-  idInput.value = '';
-  locationInput.value = '';
+  document.getElementById('id').value = '';
+  document.getElementById('location').value = '';
   readCamerasToCameras();
 
 });
@@ -143,6 +143,8 @@ document.getElementById('camera').addEventListener('click', function() {
     readCameraExists(camera);
     camerabutton.innerHTML = camera.toString();
     onofbutton.innerHTML = "";
+    onofbutton.style.backgroundColor = 'blue';
+
   } 
 });
 
