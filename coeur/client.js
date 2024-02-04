@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:3000';
 async function createCamera(id, location) {
   try {
     const response = await axios.post(`${baseUrl}/cameras`, { id, location });
-    console.log('CREATE! id:', response.data.id,"location:",response.data.location);
+    console.log('CREATE! id:', response.data.id,"location:",response.data.location,"\n");
   } catch (error) {
     console.error('Erro ao criar um novo Controlador de Câmera:', error.message);
   }
@@ -43,7 +43,7 @@ async function readCamera(id){
 async function updateLastMovement(id, lastMovement) {
   try {
     const response = await axios.put(`${baseUrl}/cameras/${id}`, { lastMovement });
-    console.log("\nCâmera",response.data.id,"foi movida para a" , response.data.lastMovement,"agora.");
+    console.log("UPDATE! Câmera",response.data.id,"foi movida para a" , response.data.lastMovement,"agora.\n");
   } catch (error) {
     console.error('Erro ao atualizar as informações do último movimento:', error.message);
   }
@@ -53,7 +53,7 @@ async function updateLastMovement(id, lastMovement) {
 async function deleteCamera(id) {
   try {
     const response = await axios.delete(`${baseUrl}/cameras/${id}`);
-    console.log("DELETE! câmera",id,response.data.message);
+    console.log("DELETE! id:",response.data.message,"\n");
   } catch (error) {
     console.error('Erro ao excluir o Controlador de Câmera:', error.message);
   }
@@ -61,23 +61,15 @@ async function deleteCamera(id) {
 
 
 // Exemplos de uso
-readCameras();
+createCamera(999, 'Entrada Principal');
+updateLastMovement(999, 'esquerda');
 
-createCamera(1, 'Entrada Principal');
+deleteCamera(999);
 
-readCamera(1);
+createCamera(998, 'Quintal');
+updateLastMovement(998, 'esquerda');
 
-updateLastMovement(1, 'esquerda');
-readCameras();
-
-deleteCamera(1);
-
-createCamera(2, 'Quintal');
-updateLastMovement(2, 'esquerda');
-
-createCamera(3, 'salas');
-
-
+createCamera(997, 'salas');
 
 readCameras();
 
