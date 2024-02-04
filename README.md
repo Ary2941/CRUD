@@ -42,5 +42,7 @@ o site cliente estará hospedado no localhost:3000
 
 # observações
 é possível ver resposta do servidor pelo terminal, basta inspecionar a página
-há um cliente de teste sem precisar usar a UI do localhost, baixa acessar coeur/client.js
-
+há um cliente de teste sem precisar usar a UI do localhost
+```bash
+node CRUD\coeur\client.js
+```
