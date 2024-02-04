@@ -9,7 +9,7 @@ app.use(cors()); // hihi burlei a política do CORS
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-let cameras = [];
+let cameras = []; // banco de dados
 
 // abrindo o server
 app.listen(PORT, () => {
