@@ -79,7 +79,7 @@ async function updateLastMovement(id, lastMovement) {
 async function deleteCamera(id) {
   try {
     const response = await axios.delete(`${baseUrl}/cameras/${id}`);
-    console.log(response.data.message);
+    console.log("Camera " + response.data.message + " desativada.");
   } catch (error) {
     console.error('Erro ao excluir o Controlador de Câmera:', error.message);
   }
@@ -115,7 +115,7 @@ document.getElementById('natal').addEventListener('click', function() {
 
     camerabutton.innerHTML = camera.toString();
     onofbutton.innerHTML = camera.toString();
-    onofbutton.style.backgroundColor = 'blue';
+    onofbutton.style.backgroundColor = '#fff';
 
   }
   
@@ -143,46 +143,36 @@ document.getElementById('camera').addEventListener('click', function() {
     readCameraExists(camera);
     camerabutton.innerHTML = camera.toString();
     onofbutton.innerHTML = "";
-    onofbutton.style.backgroundColor = 'blue';
+    onofbutton.style.backgroundColor = '#fff';
 
   } 
 });
 
-document.getElementById('up').addEventListener('click', function() {
-  if(camera_status == true){
-    updateLastMovement(camera, '&#8593;');
+// Function to handle button click events
+function handleButtonClick(movementSymbol) {
+  if (camera_status == true) {
+    updateLastMovement(camera, movementSymbol);
     readCamerasToCameras();
     var onofbutton = document.getElementById('natal');
-    onofbutton.innerHTML = "&#8593;";
+    onofbutton.innerHTML = movementSymbol;
   }
+}
+
+// Event listeners for each button
+document.getElementById('up').addEventListener('click', function() {
+  handleButtonClick('&#8593;');
 });
 
 document.getElementById('down').addEventListener('click', function() {
-  if(camera_status == true){
-    updateLastMovement(camera, '&#8595;');
-    readCamerasToCameras();
-    var onofbutton = document.getElementById('natal');
-    onofbutton.innerHTML = "&#8595;";
-  }
+  handleButtonClick('&#8595;');
 });
 
 document.getElementById('left').addEventListener('click', function() {
-  if(camera_status == true){
-    updateLastMovement(camera, '&#8592;');
-    readCamerasToCameras();
-    var onofbutton = document.getElementById('natal');
-    onofbutton.innerHTML = "&#8592;";
-
-  }
+  handleButtonClick('&#8592;');
 });
 
 document.getElementById('right').addEventListener('click', function() {
-  if(camera_status == true){
-    updateLastMovement(camera, '&#8594;');
-    readCamerasToCameras();
-    var onofbutton = document.getElementById('natal');
-    onofbutton.innerHTML = "&#8594;";
-
-  }
+  handleButtonClick('&#8594;');
 });
+
 readCamerasToCameras();

@@ -64,7 +64,7 @@ app.put('/cameras/:id', (req, res) => {
 app.delete('/cameras/:id', (req, res) => {
   const id = parseInt(req.params.id);
   cameras = cameras.filter(camera => camera.id !== id);
-  res.json({ message: 'desativada' });
+  res.json({ message: id });
 });
 
 // Rota para css
