@@ -39,3 +39,8 @@ o site cliente estará hospedado no localhost:3000
 - clicar no botão vermelho
 ![gif5](https://github.com/Ary2941/CRUD/assets/155399987/dff2ae10-aae4-425a-823b-646754fea2dd)
 
+
+# observações
+é possível ver resposta do servidor pelo terminal, basta inspecionar a página
+há um cliente de teste sem precisar usar a UI do localhost, baixa acessar coeur/client.js
+
