@@ -8,8 +8,12 @@ Este projeto consiste em um exemplo de webservice CRUD (cliente e servidor)
 - npm
 - yarn
 
-## Execução
+## Dependências
+```bash
+npm install --global yarn
+```
 
+## Execução
 ```bash
 yarn run server
 ```
