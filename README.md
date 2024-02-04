@@ -27,7 +27,7 @@ o site cliente estará hospedado no localhost:3000
 ![gif2](https://github.com/Ary2941/CRUD/assets/155399987/d7ce8b13-b5d9-4ed4-af41-6735767ccaa7)
 
 ### movimentar câmera
-- botões de seta atualizam o último movimento da câmera
+- botões de seta atualizam o último movimento da câmera (último movimento aparecerá no rótulo do botão vermelho)
 ![gif3](https://github.com/Ary2941/CRUD/assets/155399987/66daffe1-f3e3-4ef3-ace2-33e020d38786)
 
 ### trocar câmera
